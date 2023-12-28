@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
   private readonly logger = new Logger(AuthGuard.name);
 
   canActivate(context: ExecutionContext) {
-    this.logger.debug(AuthGuard.name);
+    this.logger.debug(`${AuthGuard.name} called`);
     const request = context.switchToHttp().getRequest();
     // console.log(JSON.stringify(request.headers, null, 2));  // printing all the headers
     return true;
