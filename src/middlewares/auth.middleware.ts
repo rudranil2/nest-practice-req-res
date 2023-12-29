@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, Logger, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import { RequestService } from 'src/request.service';
@@ -17,6 +18,6 @@ export class AuthMiddleware implements NestMiddleware {
     const userId = '123';
     this.requestService.setUserId(userId); //Simulating setting the req.user after using passport strategy
 
-    next();     //*next call similar to express
+    next();     //*next call similar to express - It is using next() of express
   }
 }

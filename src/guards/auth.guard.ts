@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prettier/prettier */
 import {
   CanActivate,
   ExecutionContext,
@@ -12,7 +14,9 @@ export class AuthGuard implements CanActivate {
   canActivate(context: ExecutionContext) {
     this.logger.debug(`${AuthGuard.name} called`);
     const request = context.switchToHttp().getRequest();
-    // console.log(JSON.stringify(request.headers, null, 2));  // printing all the headers
+
+    // console.log(JSON.stringify(request.headers, null, 2));  //* printing all the headers
+    
     return true;
   }
 }

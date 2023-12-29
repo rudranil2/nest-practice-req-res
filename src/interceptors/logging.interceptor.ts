@@ -29,12 +29,13 @@ export class LoggingInterceptor implements NestInterceptor {
     //Making sure the execution is proper i.e. middleware -> guard -> interceptor
     this.logger.debug(`userId : ${this.requestService.getUserId()}`);
 
-    //*Now we are catching the response stream coming from the route handler i.e. the controller -> service method 
     const now = Date.now();
+
+    //*Now we are catching the response stream coming from the route handler i.e. the controller -> service method 
     return next.handle().pipe(
         tap((res) => {
 
-            //!Catching the response from ExecutionContext
+            //! Catching the response from ExecutionContext
             const response = context.switchToHttp().getResponse();   
 
             const { statusCode } = response;
@@ -42,7 +43,7 @@ export class LoggingInterceptor implements NestInterceptor {
 
             this.logger.debug(`'${method}' '${url}' '${statusCode}' '${contentLength}' - '${userAgent}' '${ip}': Request took...${Date.now() - now} ms `);
             
-            //!HERE, we are catching the response from rxjs observable
+            //! HERE, we are catching the response from rxjs observable
             this.logger.debug(`Response received`, res);
         })
     )
